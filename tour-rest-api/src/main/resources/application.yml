@@ -1,0 +1,35 @@
+server:
+  port: 5858
+  
+ 
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  datasource:
+    #url: jdbc:mysql://localhost:3306/test
+    #username: root 
+    #password: srivatsan
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+    
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true       
+
+logging:
+  level:
+    '[org.springframework.web]': trace
+    '[org.springframework.data.jpa.repository]': trace
+    '[org.hibernate]': trace
